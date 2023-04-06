@@ -1,0 +1,73 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Debug (Chrome)",
+      "configurations": [
+        "Dev",
+        "Launch (Chrome)"
+      ]
+    },
+    {
+      "name": "Debug (Firefox)",
+      "configurations": [
+        "Dev",
+        "Launch (Firefox)"
+      ]
+    },
+    {
+      "name": "Debug (Edge)",
+      "configurations": [
+        "Dev",
+        "Launch (Edge)"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Launch (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack://?:*/*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "Launch (Firefox)",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "pathMappings": [
+        {
+          "url": "webpack://${workspaceFolderBasename}",
+          "path": "${workspaceFolder}"
+        }
+      ]
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Launch (Edge)",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Dev",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "dev"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    }
+  ]
+}
